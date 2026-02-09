@@ -1,0 +1,32 @@
+
+name: Maven Regression Test Pipeline
+
+on:
+
+  push:
+
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v4
+
+    - name: Setup Java
+
+      uses: actions/setup-java@v4
+
+      with:
+
+        java-version: '17'
+
+        distribution: 'temurin'
+
+    - name: Run Maven Tests
+
+      run: mvn clean test
